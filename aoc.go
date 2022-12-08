@@ -1,6 +1,9 @@
 package aoc
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 func ReadInput(prod bool) string {
 	file := "input.dev"
@@ -16,4 +19,8 @@ func ReadInput(prod bool) string {
 	}
 
 	return string(input)
+}
+
+func ReadLines(prod bool) []string {
+	return strings.Split(ReadInput(prod), "\n")
 }
