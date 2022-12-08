@@ -2,7 +2,6 @@ package main
 
 import (
 	"aoc"
-	"fmt"
 	"sort"
 	"strconv"
 	"strings"
@@ -34,6 +33,7 @@ func main() {
 	partOne := calories[0]
 	partTwo := calories[0] + calories[1] + calories[2]
 
-	fmt.Printf("%d\n", partOne)
-	fmt.Printf("%d\n", partTwo)
+	println(partOne)
+	println(partTwo)
+
 }
