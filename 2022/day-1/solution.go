@@ -8,13 +8,10 @@ import (
 	"strings"
 )
 
-func handleError(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
+func main() {
+	input := aoc.ReadInput(true)
 
-func sumCalories(elves []string) []int {
+	elves := strings.Split(input, "\n\n")
 	calories := make([]int, len(elves))
 
 	for i, elf := range elves {
@@ -23,7 +20,11 @@ func sumCalories(elves []string) []int {
 
 		for _, item := range items {
 			n, e := strconv.Atoi(item)
-			handleError(e)
+
+			if e != nil {
+				panic(e)
+			}
+
 			sum += n
 		}
 
@@ -34,31 +35,13 @@ func sumCalories(elves []string) []int {
 		return calories[i] > calories[j]
 	})
 
-	return calories
-}
-
-func partOne(input string) int {
-	elves := strings.Split(input, "\n\n")
-	calories := sumCalories(elves)
-
-	return calories[0]
-}
-
-func partTwo(input string) int {
-	elves := strings.Split(input, "\n\n")
-	calories := sumCalories(elves)
-	total := 0
+	partOne := calories[0]
+	partTwo := 0
 
 	for _, v := range calories[:3] {
-		total += v
+		partTwo += v
 	}
 
-	return total
-}
-
-func main() {
-	input := aoc.ReadInput(true)
-
-	fmt.Printf("%d\n", partOne(input))
-	fmt.Printf("%d\n", partTwo(input))
+	fmt.Printf("%d\n", partOne)
+	fmt.Printf("%d\n", partTwo)
 }
