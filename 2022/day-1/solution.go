@@ -15,20 +15,16 @@ func main() {
 	calories := make([]int, len(elves))
 
 	for i, elf := range elves {
-		items := strings.Split(elf, "\n")
-		sum := 0
-
-		for _, item := range items {
+		for _, item := range strings.Split(elf, "\n") {
 			n, e := strconv.Atoi(item)
 
 			if e != nil {
 				panic(e)
 			}
 
-			sum += n
+			calories[i] += n
 		}
 
-		calories[i] = sum
 	}
 
 	sort.Slice(calories, func(i, j int) bool {
